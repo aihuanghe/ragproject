@@ -22,7 +22,7 @@ def test2():
     root.withdraw()  # 隐藏主窗口
     root.update()
     file_path = filedialog.askopenfilename(title="选择文件", filetypes=[("*", "*.*")])
-    tinyRAG = TinyRAG("gcjsbanfa")
+    tinyRAG = TinyRAG("bidding-law")
     tinyRAG.add_document(path=file_path, strategy="OTHER")
 
 
