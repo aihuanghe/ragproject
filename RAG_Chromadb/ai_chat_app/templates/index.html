@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能对话助手</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>AI 对话助手</h2>
+                <button id="new-chat-btn" class="new-chat-btn">
+                    <span>+ 新对话</span>
+                </button>
+            </div>
+
+            <div class="conversation-list">
+                <div class="conversation-item active" data-id="default">
+                    <div class="conversation-title">默认对话</div>
+                    <button class="delete-conv-btn">×</button>
+                </div>
+                <!-- 对话列表会动态加载 -->
+            </div>
+            <div class="collection-selector">
+                <h4>选择数据集</h4>
+                <select id="collection-select" class="collection-dropdown">
+                    <option value="default">默认数据集</option>
+                    <option value="tech">技术文档</option>
+                    <option value="finance">金融数据</option>
+                </select>
+            </div>
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span id="status-dot" class="status-dot offline"></span>
+                    <span id="status-text">离线</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主聊天区域 -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3 id="current-conversation-title">默认对话</h3>
+                <div class="chat-actions">
+                    <button id="clear-chat" class="action-btn">清空对话</button>
+                </div>
+            </div>
+
+            <div class="messages-container" id="messages-container">
+                <div class="welcome-message">
+                    <h2>欢迎使用 AI 对话助手</h2>
+                    <p>我可以帮助你回答问题、提供信息、进行对话等</p>
+                    <div class="suggestions">
+                        <div class="suggestion-chip" data-prompt="请介绍一下你自己">招标文件规范</div>
+                        <div class="suggestion-chip" data-prompt="写一个简单的Python函数">总则</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea
+                        id="message-input"
+                        placeholder="输入你的问题..."
+                        rows="1"
+                        maxlength="2000"></textarea>
+                    <button id="send-button" class="send-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="char-count">0/2000</span>
+                    <span class="model-info">AI 助手</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载脚本 -->
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
