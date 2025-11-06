@@ -12,5 +12,5 @@ rag学习项目
 
 基于语义的文本分块：SemanticChunkerLCH
 基于结构化的文本分块：StructuredChunker
-基于结构化的文本分块：StructuredChunkerLCH
+基于大模型的文本分块：LLMBasedChunker
 递归分块：RecursiveChunker
